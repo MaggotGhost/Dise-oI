@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Línea Temporal de Homínidos</title>
+    <style>
+        :root {
+            --background: #492800;
+            --text: #ffffff;
+            --accent: #ffa149;
+            --line: #ffffff4d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            padding: 2rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Landscape background */
+        .landscape {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .landscape::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: 
+                radial-gradient(circle at 60% 20%, #ffa14922 0%, transparent 40%),
+                linear-gradient(to bottom, transparent 0%, var(--background) 100%);
+        }
+
+        /* Mountains and trees */
+        .mountains {
+            position: absolute;
+            top: 10%;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23331c00' d='M0,96L48,106.7C96,117,192,139,288,154.7C384,171,480,181,576,165.3C672,149,768,107,864,90.7C960,75,1056,85,1152,90.7C1248,96,1344,96,1392,96L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            opacity: 0.5;
+        }
+
+        /* Timeline container */
+        .timeline-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding-top: 15vh;
+        }
+
+        /* Timeline line */
+        .timeline {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1rem;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--line);
+            transform: translateY(-50%);
+        }
+
+        /* Timeline items */
+        .timeline-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            width: 2px;
+            height: 20px;
+            background: var(--line);
+            transform: translateY(-50%);
+        }
+
+        .image-container {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 1rem;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .image-container:hover {
+            transform: scale(1.1);
+        }
+
+        .timeline-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+        }
+
+        .genus-name {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.5rem;
+            color: var(--accent);
+        }
+
+        .time-period {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-top: 0.25rem;
+        }
+
+        /* Decorative elements */
+        .decorative-symbol {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            opacity: 0.2;
+        }
+
+        @media (max-width: 768px) {
+            .timeline {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .timeline::before {
+                width: 2px;
+                height: 100%;
+                left: 50%;
+                top: 0;
+                transform: translateX(-50%);
+            }
+
+            .timeline-item {
+                padding: 2rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="landscape">
+        <div class="mountains"></div>
+    </div>
+
+    <div class="timeline-container">
+        <div class="timeline">
+            <!-- Sahelanthropus -->
+            <div class="timeline-item">
+                <div class="image-container">
+                    <img src="https://i.imgur.com/C44fiRs.jpg" alt="Sahelanthropus" class="timeline-image">
+                </div>
+                <div class="genus-name">GÉNERO:<br>SAHELANTHROPUS</div>
+                <div class="time-period">7-6 Ma</div>
+            </div>
+
+            <!-- Ardipithecus -->
+            <div class="timeline-item">
+                <div class="image-container">
+                    <img src="https://i.imgur.com/PyT6cv9.jpg" alt="Ardipithecus" class="timeline-image">
+                </div>
+                <div class="genus-name">GÉNERO:<br>ARDIPITHECUS</div>
+                <div class="time-period">5.8-4.4 Ma</div>
+            </div>
+
+            <!-- Australopithecus -->
+            <div class="timeline-item">
+                <div class="image-container">
+                    <img src="https://i.imgur.com/obDYuyB.jpg" alt="Australopithecus" class="timeline-image">
+                </div>
+                <div class="genus-name">GÉNERO:<br>AUSTRALOPITHECUS</div>
+                <div class="time-period">4-2 Ma</div>
+            </div>
+
+            <!-- Kenyanthropus -->
+            <div class="timeline-item">
+                <div class="image-container">
+                    <img src="https://i.imgur.com/y3ggMuS.jpg" alt="Kenyanthropus" class="timeline-image">
+                </div>
+                <div class="genus-name">GÉNERO:<br>KENYANTHROPUS</div>
+                <div class="time-period">3.5 Ma</div>
+            </div>
+
+            <!-- Paranthropus -->
+            <div class="timeline-item">
+                <div class="image-container">
+                    <img src="https://i.imgur.com/yW5tFrd.jpg" alt="Paranthropus" class="timeline-image">
+                </div>
+                <div class="genus-name">GÉNERO:<br>PARANTHROPUS</div>
+                <div class="time-period">2.7-1.2 Ma</div>
+            </div>
+
+            <!-- Homo -->
+            <div class="timeline-item">
+                <div class="image-container">
+                    <img src="https://i.imgur.com/8tx3JUw.jpg" alt="Homo" class="timeline-image">
+                </div>
+                <div class="genus-name">GÉNERO:<br>HOMO</div>
+                <div class="time-period">2.4 Ma - PRESENTE</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Añadir efecto de parallax suave al fondo
+        document.addEventListener('mousemove', (e) => {
+            const landscape = document.querySelector('.landscape');
+            const moveX = (e.clientX * -0.01);
+            const moveY = (e.clientY * -0.01);
+            landscape.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+    </script>
+</body>
+</html>
