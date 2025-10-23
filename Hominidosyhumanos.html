@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recorrido por la Evolución de los Homínidos</title>
+    <style>
+        :root {
+            --background: #492800;
+            --text: #ffffff;
+            --accent: #ffa149;
+            --line: #ffffff4d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            height: 100vh;
+            scroll-snap-type: x mandatory;
+        }
+
+        /* Hacer el scrollbar más atractivo */
+        ::-webkit-scrollbar {
+            height: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 6px;
+        }
+
+        /* Contenedor principal */
+        .timeline-container {
+            display: flex;
+            width: 600vw; /* 6 secciones */
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Fondo con efecto parallax */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 60% 20%, #ffa14922 0%, transparent 40%),
+                linear-gradient(to bottom, #492800 0%, #2d1600 100%);
+            z-index: -1;
+        }
+
+        /* Línea temporal continua */
+        .timeline {
+            position: fixed;
+            bottom: 120px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--line);
+            z-index: 10;
+        }
+
+        /* Secciones individuales */
+        .section {
+            flex: 0 0 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 2rem;
+            scroll-snap-align: start;
+            position: relative;
+        }
+
+        /* Contenedor de imagen grande */
+        .image-container {
+            width: 80vh; /* Muy grande, usando altura de viewport */
+            height: 80vh;
+            margin-bottom: 2rem;
+            position: relative;
+            transition: transform 0.5s ease;
+        }
+
+        .image-container:hover {
+            transform: scale(1.02);
+        }
+
+        .timeline-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 4px solid var(--accent);
+            box-shadow: 0 0 50px rgba(255, 161, 73, 0.2);
+        }
+
+        /* Información del género */
+        .genus-info {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            max-width: 80vh;
+        }
+
+        .genus-name {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            text-shadow: 0 0 20px rgba(255, 161, 73, 0.3);
+        }
+
+        .time-period {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        /* Navegación */
+        .nav-dots {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1.5rem;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--line);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot:hover {
+            transform: scale(1.2);
+            background: var(--accent);
+        }
+
+        .nav-dot.active {
+            background: var(--accent);
+            transform: scale(1.4);
+            box-shadow: 0 0 20px rgba(255, 161, 73, 0.5);
+        }
+
+        /* Decoración adicional */
+        .decorative-line {
+            position: absolute;
+            bottom: 122px;
+            width: 2px;
+            height: 40px;
+            background: var(--accent);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Guía de navegación */
+        .nav-guide {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            backdrop-filter: blur(10px);
+            animation: fadeInOut 5s forwards;
+        }
+
+        @keyframes fadeInOut {
+            0%, 70% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .arrow {
+            font-size: 2rem;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="timeline"></div>
+    
+    <div class="timeline-container">
+        <!-- Sahelanthropus -->
+        <section class="section" id="sahelanthropus">
+            <div class="image-container">
+                <a href="Sahelantrophus.html" title="Ver modelo interactivo">
+                    <img src="https://i.imgur.com/C44fiRs.jpg" alt="Sahelanthropus" class="timeline-image">
+                </a>
+            </div>
+            <div class="genus-info">
+                <h2 class="genus-name">Sahelanthropus</h2>
+                <div class="time-period">7-6 millones de años</div>
+            </div>
+            <div class="decorative-line"></div>
+        </section>
+
+        <!-- Ardipithecus -->
+        <section class="section" id="ardipithecus">
+            <div class="image-container">
+                <img src="https://i.imgur.com/PyT6cv9.jpg" alt="Ardipithecus" class="timeline-image">
+            </div>
+            <div class="genus-info">
+                <h2 class="genus-name">Ardipithecus</h2>
+                <div class="time-period">5.8-4.4 millones de años</div>
+            </div>
+            <div class="decorative-line"></div>
+        </section>
+
+        <!-- Australopithecus -->
+        <section class="section" id="australopithecus">
+            <div class="image-container">
+                <img src="https://i.imgur.com/obDYuyB.jpg" alt="Australopithecus" class="timeline-image">
+            </div>
+            <div class="genus-info">
+                <h2 class="genus-name">Australopithecus</h2>
+                <div class="time-period">4-2 millones de años</div>
+            </div>
+            <div class="decorative-line"></div>
+        </section>
+
+        <!-- Kenyanthropus -->
+        <section class="section" id="kenyanthropus">
+            <div class="image-container">
+                <img src="https://i.imgur.com/y3ggMuS.jpg" alt="Kenyanthropus" class="timeline-image">
+            </div>
+            <div class="genus-info">
+                <h2 class="genus-name">Kenyanthropus</h2>
+                <div class="time-period">3.5 millones de años</div>
+            </div>
+            <div class="decorative-line"></div>
+        </section>
+
+        <!-- Paranthropus -->
+        <section class="section" id="paranthropus">
+            <div class="image-container">
+                <img src="https://i.imgur.com/yW5tFrd.jpg" alt="Paranthropus" class="timeline-image">
+            </div>
+            <div class="genus-info">
+                <h2 class="genus-name">Paranthropus</h2>
+                <div class="time-period">2.7-1.2 millones de años</div>
+            </div>
+            <div class="decorative-line"></div>
+        </section>
+
+        <!-- Homo -->
+        <section class="section" id="homo">
+            <div class="image-container">
+                <img src="https://i.imgur.com/8tx3JUw.jpg" alt="Homo" class="timeline-image">
+            </div>
+            <div class="genus-info">
+                <h2 class="genus-name">Homo</h2>
+                <div class="time-period">2.4 Ma - Presente</div>
+            </div>
+            <div class="decorative-line"></div>
+        </section>
+    </div>
+
+    <div class="nav-dots">
+        <div class="nav-dot active"></div>
+        <div class="nav-dot"></div>
+        <div class="nav-dot"></div>
+        <div class="nav-dot"></div>
+        <div class="nav-dot"></div>
+        <div class="nav-dot"></div>
+    </div>
+
+    <div class="nav-guide">
+        <span class="arrow">→</span>
+        Desliza para explorar
+    </div>
+
+    <script>
+        // Actualizar navegación al hacer scroll
+        const sections = document.querySelectorAll('.section');
+        const dots = document.querySelectorAll('.nav-dot');
+
+        function updateNavigation() {
+            const scrollX = window.scrollX;
+            const windowWidth = window.innerWidth;
+            const currentSection = Math.round(scrollX / windowWidth);
+
+            dots.forEach(dot => dot.classList.remove('active'));
+            if (dots[currentSection]) {
+                dots[currentSection].classList.add('active');
+            }
+        }
+
+        window.addEventListener('scroll', updateNavigation);
+
+        // Navegación con clicks
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                window.scrollTo({
+                    left: index * window.innerWidth,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navegación con teclado
+        document.addEventListener('keydown', (e) => {
+            const currentScroll = window.scrollX;
+            const windowWidth = window.innerWidth;
+
+            if (e.key === 'ArrowRight') {
+                window.scrollTo({
+                    left: currentScroll + windowWidth,
+                    behavior: 'smooth'
+                });
+            } else if (e.key === 'ArrowLeft') {
+                window.scrollTo({
+                    left: currentScroll - windowWidth,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    </script>
+</body>
+</html>
