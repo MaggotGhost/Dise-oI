@@ -172,11 +172,107 @@
             background: var(--accent);
             color: #000;
         }
+
+        /* Mini timeline para mostrar el recorrido */
+        .journey-timeline {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 300px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1rem;
+            border: 1px solid var(--accent);
+            z-index: 15;
+        }
+
+        .journey-title {
+            color: var(--accent);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .journey-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .journey-step {
+            flex: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .journey-step.active {
+            background: var(--accent);
+        }
+
+        .journey-step::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .journey-step.active::after {
+            background: var(--accent);
+            box-shadow: 0 0 10px rgba(255, 161, 73, 0.5);
+        }
+
+        .journey-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .journey-label {
+            text-align: center;
+            flex: 1;
+        }
+
+        .journey-label.active {
+            color: var(--accent);
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <a href="Hominidosyhumanos.html" class="back-button">← Volver a la línea temporal</a>
-    
+
+    <!-- Mini timeline del recorrido -->
+    <div class="journey-timeline">
+        <div class="journey-title">Tu Recorrido</div>
+        <div class="journey-steps">
+            <div class="journey-step active"></div>
+            <div class="journey-step"></div>
+            <div class="journey-step"></div>
+            <div class="journey-step"></div>
+            <div class="journey-step"></div>
+            <div class="journey-step"></div>
+        </div>
+        <div class="journey-labels">
+            <div class="journey-label active">Sahelanthropus</div>
+            <div class="journey-label">Ardipithecus</div>
+            <div class="journey-label">Australopithecus</div>
+            <div class="journey-label">Kenyanthropus</div>
+            <div class="journey-label">Paranthropus</div>
+            <div class="journey-label">Homo</div>
+        </div>
+    </div>
+
     <div class="container">
         <header class="header">
             <h1 class="title">Sahelanthropus tchadensis</h1>
