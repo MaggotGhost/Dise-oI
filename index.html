@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Descubrimiento de los homínidos y la humanidad</title>
-    <meta name="description" content="Bienvenido al descubrimiento de los homínidos y la humanidad: una introducción visual e informativa sobre nuestros orígenes." />
+    <title>Bienvenido al descubrimiento de los homínidos y la humanidad</title>
+    <meta name="description" content="Adéntrate en una introducción visual y emotiva sobre nuestros orígenes. Aquí encontrarás relatos, imágenes y observaciones que conectan los fósiles, las culturas y las historias que nos hicieron humanos." />
     <style>
       :root{
         --accent:#ffb74d;
-        --bg-gradient:linear-gradient(120deg,#0f2027 0%,#203a43 50%,#2c5364 100%);
+        --bg-gradient:linear-gradient(120deg,#0f0f0f 0%,#1a1a1a 50%,#2a2a2a 100%);
         --glass: rgba(255,255,255,0.06);
         --text: #f7f7f7;
         --muted: rgba(247,247,247,0.8);
@@ -32,19 +32,18 @@
         position:relative;
         overflow:hidden;
       }
-      .hero::before{
-        content:"";
+
+      video{
         position:absolute;
-        inset:0;
-        background-image: url('https://i.imgur.com/M51jc0S.jpg');
-        background-size:cover;
-        background-position:center center;
-        filter:grayscale(15%) contrast(90%) brightness(55%);
-        transform:scale(1.06);
-        z-index:0;
-      }
-      .overlay{
-        position:absolute;inset:0;background:linear-gradient(180deg, rgba(16,24,32,0.45), rgba(8,12,18,0.7));z-index:1;
+        top:50;
+        left:100;
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        z-index:-1;
+        autoplay: true;
+        muted: true;
+        loop: true;
       }
       .container{
         position:relative;
@@ -55,11 +54,12 @@
         box-sizing:border-box;
       }
       .card{
-        background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+        background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2));
         border-radius:12px;
         padding:36px;
-        box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         backdrop-filter: blur(6px);
+        border: 1px solid rgba(255,255,255,0.1);
       }
       h1{
         margin:0 0 18px 0;
@@ -95,6 +95,39 @@
         .hero-grid{grid-template-columns:1fr 420px}
         .card{padding:48px}
       }
+      .hero-grid section{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap;justify-content:space-between}
+      .text-content{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap}
+      .video-box{
+        position: relative;
+        width: 320px;
+        height: auto;
+        border-radius: 30px;
+        box-shadow: 0 100px 100px rgba(0,0,0,0.8);
+        background: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        margin-right: -500px;
+        margin-top: -100px;
+      }
+      .video-box::before{
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: 500%;
+        transform: translateX(-100%);
+        width: 150px;
+        height: 20px;
+        background: #333;
+        border-radius: 10px;
+      }
+      .video-box video{
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+        border: 10px solid #000;
+      }
       /* small touches */
       .logo{font-weight:700;color:var(--accent);letter-spacing:0.02em}
       .subtle{font-size:0.92rem;color:rgba(255,255,255,0.72)}
@@ -102,16 +135,28 @@
   </head>
   <body>
     <main class="hero" role="main">
-      <div class="overlay" aria-hidden="true"></div>
+      <video autoplay muted loop>
+        <source src="https://i.imgur.com/vfRCaTx.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
       <div class="container">
         <div class="hero-grid">
           <section>
-            <div class="logo subtle">Genus — Exploraciones</div>
-            <h1>Bienvenido al descubrimiento de los homínidos y la humanidad</h1>
-            <p class="lead">Adéntrate en una introducción visual y emotiva sobre nuestros orígenes. Aquí encontrarás relatos, imágenes y observaciones que conectan los fósiles, las culturas y las historias que nos hicieron humanos.</p>
+            <div class="text-content">
+              <div class="text-block">
+                <div class="logo subtle">Genus — Exploraciones</div>
+                <h1>Bienvenido al descubrimiento de los homínidos y la humanidad</h1>
+                <p class="lead">Adéntrate en una introducción visual y emotiva sobre nuestros orígenes. Aquí encontrarás relatos, imágenes y observaciones que conectan los fósiles, las culturas y las historias que nos hicieron humanos.</p>
+              </div>
+              <div class="video-box">
+                <video autoplay muted loop>
+                  <source src="https://i.imgur.com/WlSfMdx.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
             <div class="actions">
-              <a class="btn" href="https://maggotghost.github.io/Dise-oI/Hominidosyhumanos.html" id="startBtn">Explorar ahora</a>
-              <a class="btn secondary" href="#acerca">Más información</a>
+              <a class="btn" href="https://maggotghost.github.io/Dise-oI/Hominidosyhumanos.html" id="startBtn">Iniciar el Recorrido</a>
             </div>
           </section>
         </div>
