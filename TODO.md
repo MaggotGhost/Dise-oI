@@ -1,0 +1,3 @@
+- [x] Commit all current changes to Git
+- [x] Push changes to GitHub
+- [ ] Enable GitHub Pages for the repository
