@@ -403,6 +403,34 @@
             background: rgba(0, 0, 0, 0.3);
             z-index: -1;
         }
+
+        /* Mensaje lateral izquierdo */
+        .mobile-app-message {
+            position: fixed;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            width: 250px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1rem;
+            border: 1px solid var(--accent);
+            z-index: 15;
+            text-align: center;
+        }
+
+        .mobile-app-title {
+            color: var(--accent);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-app-text {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+        }
     </style>
 </head>
 <body>
@@ -411,7 +439,7 @@
     </video>
     <div class="video-overlay"></div>
 
-    <a href="Hominidosyhumanos.html" class="back-button">← Volver a la línea temporal</a>
+    <a href="humanos.html" class="back-button">← Volver a la línea temporal</a>
 
     <!-- Mini timeline del recorrido -->
     <div class="journey-timeline">
@@ -450,6 +478,12 @@
     <!-- Notificación -->
     <div class="notification" id="notification">
         Da clic a los nodos para comenzar el recorrido.
+    </div>
+
+    <!-- Mensaje lateral izquierdo -->
+    <div class="mobile-app-message">
+        <div class="mobile-app-title">¡Descubre más!</div>
+        <div class="mobile-app-text">Para visualizar el modelo 3D te invitamos a dar clic en el siguiente link y visitar nuestra app móvil.</div>
     </div>
 
     <div class="container">
