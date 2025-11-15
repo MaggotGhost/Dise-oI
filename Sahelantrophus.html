@@ -216,6 +216,25 @@
             padding: 1rem;
             border: 1px solid var(--accent);
             z-index: 15;
+            overflow-x: auto;
+        }
+
+        .journey-timeline::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .journey-timeline::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .journey-timeline::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        .journey-timeline::-webkit-scrollbar-thumb:hover {
+            background: #e6933a;
         }
 
         .journey-title {
@@ -227,17 +246,18 @@
 
         .journey-steps {
             display: flex;
-            justify-content: space-between;
             align-items: center;
             gap: 0.5rem;
+            min-width: fit-content;
         }
 
         .journey-step {
-            flex: 1;
+            width: 80px;
             height: 4px;
             background: rgba(255, 255, 255, 0.3);
             border-radius: 2px;
             position: relative;
+            flex: none;
         }
 
         .journey-step.active {
@@ -263,16 +283,17 @@
 
         .journey-labels {
             display: flex;
-            justify-content: space-between;
             margin-top: 0.5rem;
             font-size: 0.6rem;
             color: rgba(255, 255, 255, 0.7);
             gap: 0.5rem;
+            min-width: fit-content;
         }
 
         .journey-label {
             text-align: center;
-            flex: 1;
+            width: 80px;
+            flex: none;
         }
 
         .journey-label.active {
@@ -491,6 +512,12 @@
             <div class="journey-step"></div>
             <div class="journey-step"></div>
             <div class="journey-step"></div>
+            <div class="journey-step"></div>
+            <div class="journey-step"></div>
+            <div class="journey-step"></div>
+            <div class="journey-step"></div>
+            <div class="journey-step"></div>
+            <div class="journey-step"></div>
         </div>
         <div class="journey-labels">
             <div class="journey-label active">Sahelanthropus</div>
@@ -498,7 +525,13 @@
             <div class="journey-label">Australopithecus</div>
             <div class="journey-label">Kenyanthropus</div>
             <div class="journey-label">Paranthropus</div>
-            <div class="journey-label">Homo</div>
+            <div class="journey-label">Australopithecus africanus</div>
+            <div class="journey-label">Paranthropus boisei</div>
+            <div class="journey-label">Homo habilis</div>
+            <div class="journey-label">Homo erectus</div>
+            <div class="journey-label">Homo heidelbergensis</div>
+            <div class="journey-label">Homo neanderthalensis</div>
+            <div class="journey-label">Homo sapiens</div>
         </div>
     </div>
 
@@ -520,11 +553,7 @@
         Da clic a los nodos para comenzar el recorrido.
     </div>
 
-    <!-- Mensaje lateral izquierdo -->
-    <div class="mobile-app-message">
-        <div class="mobile-app-title">¡Descubre más!</div>
-        <div class="mobile-app-text">Para visualizar el modelo 3D te invitamos a dar clic en el siguiente link y visitar nuestra app móvil.</div>
-    </div>
+
 
     <div class="container">
         <header class="header">

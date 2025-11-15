@@ -216,6 +216,25 @@
             padding: 1rem;
             border: 1px solid var(--accent);
             z-index: 15;
+            overflow-x: auto;
+        }
+
+        .journey-timeline::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .journey-timeline::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .journey-timeline::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        .journey-timeline::-webkit-scrollbar-thumb:hover {
+            background: #e6933a;
         }
 
         .journey-title {
@@ -227,17 +246,18 @@
 
         .journey-steps {
             display: flex;
-            justify-content: space-between;
             align-items: center;
             gap: 0.5rem;
+            min-width: fit-content;
         }
 
         .journey-step {
-            flex: 1;
+            width: 80px;
             height: 4px;
             background: rgba(255, 255, 255, 0.3);
             border-radius: 2px;
             position: relative;
+            flex: none;
         }
 
         .journey-step.active {
@@ -263,16 +283,17 @@
 
         .journey-labels {
             display: flex;
-            justify-content: space-between;
             margin-top: 0.5rem;
             font-size: 0.6rem;
             color: rgba(255, 255, 255, 0.7);
             gap: 0.5rem;
+            min-width: fit-content;
         }
 
         .journey-label {
             text-align: center;
-            flex: 1;
+            width: 80px;
+            flex: none;
         }
 
         .journey-label.active {
@@ -491,6 +512,12 @@
             <div class="journey-step active"></div>
             <div class="journey-step"></div>
             <div class="journey-step"></div>
+            <div class="journey-step"></div>
+            <div class="journey-step"></div>
+            <div class="journey-step"></div>
+            <div class="journey-step"></div>
+            <div class="journey-step"></div>
+            <div class="journey-step"></div>
         </div>
         <div class="journey-labels">
             <div class="journey-label">Sahelanthropus</div>
@@ -498,7 +525,13 @@
             <div class="journey-label">Australopithecus</div>
             <div class="journey-label active">Kenyanthropus</div>
             <div class="journey-label">Paranthropus</div>
-            <div class="journey-label">Homo</div>
+            <div class="journey-label">Australopithecus africanus</div>
+            <div class="journey-label">Paranthropus boisei</div>
+            <div class="journey-label">Homo habilis</div>
+            <div class="journey-label">Homo erectus</div>
+            <div class="journey-label">Homo heidelbergensis</div>
+            <div class="journey-label">Homo neanderthalensis</div>
+            <div class="journey-label">Homo sapiens</div>
         </div>
     </div>
 
@@ -542,7 +575,7 @@
                 <div class="node hidden" style="top: 28%; left: 45%" data-info="craneo" data-order="1">
                     <div class="info-panel">
                         <h3 class="info-title">Cráneo</h3>
-                        <p class="info-text">Cráneo con características únicas que lo distinguen de otros homínidos contemporáneos.</p>
+                        <p class="info-text">Cráneo con capacidad craneal moderada y características faciales planas.</p>
                         <p class="info-status" id="status-1">Estado: No visitado</p>
                     </div>
                 </div>
@@ -550,7 +583,7 @@
                 <div class="node hidden" style="top: 38%; left: 48%" data-info="cara" data-order="2">
                     <div class="info-panel">
                         <h3 class="info-title">Región Facial</h3>
-                        <p class="info-text">Cara con morfología distintiva, incluyendo órbitas grandes y frente amplia.</p>
+                        <p class="info-text">Cara relativamente plana con dientes pequeños, similar a especies posteriores.</p>
                         <p class="info-status" id="status-2">Estado: No visitado</p>
                     </div>
                 </div>
@@ -558,7 +591,7 @@
                 <div class="node hidden" style="top: 45%; left: 47%" data-info="dientes" data-order="3">
                     <div class="info-panel">
                         <h3 class="info-title">Dentición</h3>
-                        <p class="info-text">Dientes con características que sugieren dieta especializada.</p>
+                        <p class="info-text">Dientes con características intermedias entre Australopithecus y Homo.</p>
                         <p class="info-status" id="status-3">Estado: No visitado</p>
                     </div>
                 </div>
@@ -566,7 +599,7 @@
                 <div class="node hidden" style="top: 52%; left: 45%" data-info="foramen" data-order="4">
                     <div class="info-panel">
                         <h3 class="info-title">Foramen Magnum</h3>
-                        <p class="info-text">Posición del foramen magnum indica adaptación a la bipedestación.</p>
+                        <p class="info-text">Posición que indica locomoción bípeda desarrollada.</p>
                         <p class="info-status" id="status-4">Estado: No visitado</p>
                     </div>
                 </div>
@@ -574,7 +607,7 @@
                 <div class="node hidden" style="top: 58%; left: 47%" data-info="mandibula" data-order="5">
                     <div class="info-panel">
                         <h3 class="info-title">Mandíbula</h3>
-                        <p class="info-text">Mandíbula con características robustas adaptadas a su entorno.</p>
+                        <p class="info-text">Mandíbula con características robustas pero menos que Paranthropus.</p>
                         <p class="info-status" id="status-5">Estado: No visitado</p>
                     </div>
                 </div>
